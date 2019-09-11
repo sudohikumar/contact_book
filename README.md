@@ -15,7 +15,7 @@
     ```
 
 ## API Docs:
-- GET /getContacts/<offset>/<limit>/?<query_params>
+- GET /getContacts/`<offset>`/`<limit>`/?`<query_params>`
   - **DESCRIPTION**: Fetch the list of contacts based on parameters specified.
   - offset (optional) : Starting point from where the list should be displayed. (Default: 0)
   - limit (optional. If given, offset is required as well.): Total number of items to display. (Default: 10)
@@ -39,7 +39,7 @@
     ```
   - Returns Object ID or error.
 
-- PUT /updateContact/<id>
+- PUT /updateContact/`<id>`
   - **DESCRIPTION**: Update existing contact.
   - **Request Body**: Data to send.
     ```
@@ -52,6 +52,6 @@
     Other fields if given are automatically rejected. Basic validations for Email, Name and Phone number is also present. If invalid data, it throws error.
   - id: Object ID to update.
 
-- DELETE /deleteContact/<id>
+- DELETE /deleteContact/`<id>`
   - **DESCRIPTION**: Delete existing contact.
   - id: Object ID to delete.
