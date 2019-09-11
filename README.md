@@ -11,10 +11,14 @@
     ```
 - Run
     ```
-    python webservice.py to start the web server
+    python webservice.py
     ```
+   to start the web server.
 
 ## API Docs:
+- GET /
+  - **DESCRIPTION**: Healthy Point to verify
+
 - GET /getContacts/`<offset>`/`<limit>`/?`<query_params>`
   - **DESCRIPTION**: Fetch the list of contacts based on parameters specified.
   - offset (optional) : Starting point from where the list should be displayed. (Default: 0)
