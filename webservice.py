@@ -13,6 +13,11 @@ CLIENT = None
 COLLECTION = None
 
 
+@app.route('/', methods=['GET'])
+def index():
+    return 'It Works'
+
+
 @app.route('/getContacts', methods=['GET'], strict_slashes=False, defaults={'offset': 0, 'limit': 10})
 @app.route('/getContacts/<offset>/', methods=['GET'], strict_slashes=False, defaults={'limit': 10})
 @app.route('/getContacts/<offset>/<limit>', methods=['GET'], strict_slashes=False)
