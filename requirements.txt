@@ -2,4 +2,4 @@ flask
 pymongo
 dataclasses-json
 dnspython
-jwt
+pyjwt
