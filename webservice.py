@@ -16,7 +16,7 @@ COLLECTION = None
 
 @app.before_request
 def authorization():
-    if request.endpoint != 'authorize':
+    if request.endpoint not in ['authorize', 'index']:
         try:
             auth_data = decrypt_data(request.headers['Authorization'])
             if not (auth_data['username'] == app.config['ADMIN_USER'] and auth_data['password'] == app.config['ADMIN_PASSWORD']):
