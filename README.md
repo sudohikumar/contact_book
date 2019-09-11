@@ -1,5 +1,5 @@
 ## How to Run:
-- Make the file **config.json** with following parameters. (Sample given)
+- Make the file **config.json** in root folder with following parameters. (Sample given)
     ```
     {
         "MONGO_HOST": "mongo-atlas.mongodb.net",
