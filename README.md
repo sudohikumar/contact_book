@@ -6,9 +6,12 @@
         "USERNAME": "<username>",
         "PASSWORD": "<password>",
         "DATABASE": "<db_name>",
-        "COLLECTION": "<collection_in_db>"
+        "COLLECTION": "<collection_in_db>",
+        "ADMIN_USER": "<Admin User>",
+        "ADMIN_PASSWORD": "<Admin Password>"
     }
     ```
+    Admin User and Password is used to authorize the requests.
 - Run
     ```
     python webservice.py
@@ -16,8 +19,15 @@
    to start the web server.
 
 ## API Docs:
+- Headers required:
+  - Authorization: `<JWT Token>`
+
 - GET /
   - **DESCRIPTION**: Healthy Point to verify
+
+- GET /authorize/`<username>`/`<password>`
+  - **DESCRIPTION**: Get auth token for creating requests.
+  - Returns JWT Token.
 
 - GET /getContacts/`<offset>`/`<limit>`/?`<query_params>`
   - **DESCRIPTION**: Fetch the list of contacts based on parameters specified.

@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, redirect, request
 
 from connectors.connect import get_collection, get_mongo_client
+from helpers.auth import decrypt_data, encrypt_data
 from helpers.classes import config
 from helpers.helpers import load_data
 from mongo_helpers.operations import (delete_data, insert_data, read_data,
@@ -11,6 +12,22 @@ app.config.from_json('config.json')
 
 CLIENT = None
 COLLECTION = None
+
+
+@app.before_request
+def authorization():
+    if request.endpoint != 'authorize':
+        try:
+            auth_data = decrypt_data(request.headers['Authorization'])
+            if not (auth_data['username'] == app.config['ADMIN_USER'] and auth_data['password'] == app.config['ADMIN_PASSWORD']):
+                return 'Unauthorized user.'
+        except Exception as e:
+            return str(e)
+
+
+@app.route('/authorize/<username>/<password>', methods=['GET'], strict_slashes=False)
+def authorize(username, password):
+    return encrypt_data(username=username, password=password)
 
 
 @app.route('/', methods=['GET'])
