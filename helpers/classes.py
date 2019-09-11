@@ -19,3 +19,7 @@ class contacts_data:
     email: str
     name: str
     phone: str
+
+    def __post_init__(self):
+        self.name = self.name.lower()
+        self.email = self.email.lower()
