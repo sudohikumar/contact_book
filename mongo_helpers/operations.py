@@ -9,7 +9,7 @@ from helpers.classes import contacts_data
 
 def read_data(collection, offset, limit, **kwargs):
     for key in kwargs.keys():
-        kwargs[key] = {'$regex': f'^{kwargs[key]}'}
+        kwargs[key] = {'$regex': kwargs[key]}
     return json.loads(dumps(collection.find(kwargs).skip(offset).sort('_id', ASCENDING).limit(limit)))
 
 
